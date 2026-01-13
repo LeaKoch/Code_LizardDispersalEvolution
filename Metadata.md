@@ -1,0 +1,100 @@
+# tbl_capt
+
+A dataset with phenotypic measurements of each known individual, at each encounter.
+
+|  **Variable name**  |  **Meaning**  |  **Modality**  |  **Units**  |  **Comments**  |
+|:-:|:-:|:-:|:-:|:-:|
+| animal | Animal unique identifier. |  |  | |
+| Stage | Animal developmental stage | SA : Sub-adult ; A : Adult (sexually mature) |  | SA and A stage can be identified with confidence due to dimorphism |
+| AN | Capture year |  |  | For newborn individual, AN indicate birth year |
+| Sex | Animal sex | F : Female ; M : Male. |  |  |
+| PARTAN | Animal Birth year | | | |
+| ID_Mum | Identity of the animal's mother | | | |
+| Distance | Distance travelled during the last dispersal event. | | meters | |
+| Propention | Distance status during the last dispersal event. | F : resident ; T = disperser|  | |
+| Senescence | Animal senescence status | Jeune < 4 ans ; Senescent > 4 ans|  |  |
+| Senescence_Mum | Senescence status of the animal's mother | Jeune_m < 4 ans ; Senescent_m => 4 ans|  |  |
+
+
+
+------------------------------------------------------------------
+# tbl_history
+
+A dataset with capture history of each known individual. 
+
+|  **Variable name**  |  **Meaning**  |  **Modality**  |  **Units**  |  **Comments**  |
+|:-:|:-:|:-:|:-:|:-:|
+| ID | Animal unique identifier. |  |  | |
+| Birth | Year of birth |  |  | |
+| Death | Year of death |  |  | |
+| 1999:2022 | Year of capture | 0 : individual not encounter ; 1 : individual encounter |  | |
+| Distance | Distance travelled during natal dispersal |  | meters | |
+| F_J_D | Young female that dispersed during natal dispersal | 0 : No ; 1 : Yes |  | |
+| F_S_D | Old female that dispersed during natal dispersal | 0 : No ; 1 : Yes |  | |
+| F_J_P | Young female that remained resident during natal dispersal | 0 : No ; 1 : Yes |  | |
+| F_S_P | Old female that remained resident during natal dispersal | 0 : No ; 1 : Yes |  | |
+| M_J_D | Young male that dispersed during natal dispersal | 0 : No ; 1 : Yes |  | |
+| M_S_D | Old male that dispersed during natal dispersal | 0 : No ; 1 : Yes |  | |
+| M_J_P | Young male that remained resident during natal dispersal | 0 : No ; 1 : Yes |  | |
+| M_S_P | Old male that remained resident during natal dispersal | 0 : No ; 1 : Yes |  | |
+
+
+
+------------------------------------------------------------------
+# tbl_RE
+
+A dataset with reproductive data of each known individual, for each detected reproductive event.
+
+|  **Variable name**  |  **Meaning**  |  **Modality**  |  **Units**  |  **Comments**  |
+|:-:|:-:|:-:|:-:|:-:|
+| Id | Animal unique identifier. |  |  | |
+| Year | Year of reproductive event |  |  | |
+| V | Number of viable offspring |  |  | |
+| D | Number of stillborn |  |  | |
+| A | Number of aborted offspring |  |  | |
+| E | Number of unfertilized eggs |  |  | |
+| Clutch_S | Clutch size |  |  | |
+| Sex | Animal sex | F : Female ; M : Male. |  | |
+| Clutch_W | Clutch weight |  |  | |
+| Age_FR | Age at first reproduction |  |  | |
+| Year_FR | Year at first reproduction |  |  | |
+
+
+
+------------------------------------------------------------------
+# tbl_pedigree
+
+The pedigree of the studied population
+
+|  **Variable name**  |  **Meaning**  |  **Modality**  |  **Units**  |  **Comments**  |
+|:-:|:-:|:-:|:-:|:-:|
+| animal | Animal unique identifier. |  |  | |
+| ID_Mom | Identity of the animal's mother |  |  | |
+| ID_Dad | Identity of the animal's father |  |  | |
+
+
+
+------------------------------------------------------------------
+# tbl_hapl
+
+A dataset with gene-dropping data of each known individual.
+
+|  **Variable name**  |  **Meaning**  |  **Modality**  |  **Units**  |  **Comments**  |
+|:-:|:-:|:-:|:-:|:-:|
+| animal | Animal unique identifier. |  |  | |
+| cohort | Year of birth. |  |  | |
+| Contrib | Expected genetic contribution. |  |  | |
+| L_surv | Lineage longevity. |  | Year | |
+
+
+
+------------------------------------------------------------------
+# tbl_Propention
+
+A dataset with the estimated propensity to disperse at adult stage for each known individual.
+
+|  **Variable name**  |  **Meaning**  |  **Modality**  |  **Units**  |  **Comments**  |
+|:-:|:-:|:-:|:-:|:-:|
+| animal | Animal unique identifier. |  |  | |
+| BLUP | Adult dispersal propensity. |  |  | |
+| Iter | Iteration identifier. |  |  | |
