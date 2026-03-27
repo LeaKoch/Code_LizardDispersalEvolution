@@ -9,6 +9,7 @@ conflicted::conflicts_prefer(dplyr::filter)
 ##########################################################################
 
 ## Loading required packages ---------------------------------------------
+library(here)
 library(tidyverse)
 library(dplyr)
 library(MCMCglmm)
@@ -1311,3 +1312,74 @@ Mod_TLM <- brm_multiple(L_surv ~ 1,
                         data = List_truncated,
                         family = Gamma(link = "log"),
                         chains = 4)
+
+
+############################################################################
+# Adult dispersal information
+
+# -------------------------------------------------- 'Dispersal probability'
+Id_disp <- 
+  tbl_capt |> 
+  filter(
+    Propention == "T"
+  ) |> 
+  select(animal) |>
+  unique()
+
+n_disp <- nrow(Id_disp)
+
+Id_resi <- 
+  tbl_capt |> 
+  filter(
+    Propention == "F",
+    !(animal %in% Id_disp$animal)
+  ) |> 
+  select(animal) |>
+  unique()
+
+n_resi <- nrow(Id_resi)
+
+n_disp / (n_resi + n_disp) # 0.362
+
+# ----------------------------------------------------- 'Dispersal distance'
+tbl_disp <-
+  tbl_capt |>
+  filter(Propention == "T")
+
+min(tbl_disp$Distance)     # 20.1 
+max(tbl_disp$Distance)     # 158.162
+mean(tbl_disp$Distance)    # 42.767
+sd(tbl_disp$Distance) / sqrt(length(tbl_disp$Distance)) # 1.006
+
+# -------------------------------------------------------------- 'Sex & Age'
+tbl_disp <-
+  tbl_capt |>
+  filter(!is.na(Age),
+         !is.na(SEX),
+         !is.na(Propention)) |>
+  summarise(
+    n_F = sum(Propention == "F", na.rm = TRUE),
+    n_T = sum(Propention == "T", na.rm = TRUE),
+    .by = c(Age, SEX)
+  ) |>
+  mutate(
+    total = n_F + n_T
+  )
+
+Mod_AD_1 <- glm(cbind(n_T, total) ~ Age + SEX,
+                family = binomial,
+                tbl_disp)
+# No significant effect of Sex
+
+Mod_AD_1 <- glm(cbind(n_T, total) ~ Age,
+                family = binomial,
+                tbl_disp)
+
+
+
+
+
+
+
+
+
