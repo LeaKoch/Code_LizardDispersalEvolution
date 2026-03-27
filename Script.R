@@ -1374,12 +1374,3 @@ Mod_AD_1 <- glm(cbind(n_T, total) ~ Age + SEX,
 Mod_AD_1 <- glm(cbind(n_T, total) ~ Age,
                 family = binomial,
                 tbl_disp)
-
-
-
-
-
-
-
-
-
